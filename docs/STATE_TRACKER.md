@@ -1,6 +1,6 @@
 # State Tracker Template
 
-This file defines how to persist the multi-round AI execution state for ChatGPT + Cursor + GitHub workflow.
+This file defines how to persist the multi-round AI execution state for ChatGPT + Cursor + GitHub workflow, incorporating Claude-inspired multi-phase tracking.
 
 ## Purpose
 - Maintain long-term context for multi-round tasks
@@ -31,3 +31,8 @@ This file defines how to persist the multi-round AI execution state for ChatGPT 
 - Next Round Assigned:
 - Responsible Party:
 - Remarks:
+
+### Phase Tracking
+- Phase: Plan / Execute / Verify
+- Phase Status: Pending / In Progress / Completed
+- Phase Notes:
