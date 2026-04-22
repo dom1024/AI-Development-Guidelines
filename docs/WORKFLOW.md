@@ -1,82 +1,83 @@
 # Workflow
 
-This workflow defines how **human + ChatGPT + Cursor + GitHub** collaborate during software development.
+This workflow defines how **human + ChatGPT + Cursor + GitHub** collaborate during software development, integrating Claude-inspired multi-round practices.
 
 ## Roles
 
 ### Human
-- defines business priority
-- approves key architectural changes
-- reviews important pull requests
-- decides whether to continue, rollback, or change direction
+- Defines business priorities
+- Approves key architectural changes
+- Reviews critical pull requests
+- Determines whether to continue, rollback, or change direction
 
 ### ChatGPT
-- acts as architect and task orchestrator
-- decomposes work into small execution rounds
-- chooses whether a round should use Auto or a manually selected model
-- generates Cursor-ready prompts
-- interprets Cursor output and plans the next round
+- Acts as architect and task orchestrator
+- Decomposes work into small execution rounds
+- Determines if a round should use Auto or a manually selected model
+- Generates Cursor-ready prompts
+- Interprets Cursor output and plans next round
 
 ### Cursor
-- acts as execution engineer
-- reads repository context
-- makes code changes within scope
-- runs tests or validation commands
-- reports changed files, results, and blockers
+- Acts as execution engineer
+- Reads repository context
+- Makes code changes within scope
+- Runs tests or validation commands
+- Reports changed files, results, and blockers
 
 ### GitHub
-- stores long-term project memory
-- holds docs, issues, PRs, templates, and decision logs
-- provides a stable source of truth outside transient chat context
+- Stores long-term project memory
+- Holds docs, issues, PRs, templates, and decision logs
+- Provides a stable source of truth outside transient chat context
 
 ## Standard Round Protocol
 
 ### Step 1: Input
 The human provides:
-- task name
-- target outcome
-- current state
-- scope
-- constraints
-- whether the task is critical
+- Task name
+- Target outcome
+- Current state
+- Scope
+- Constraints
+- Whether the task is critical
 
 ### Step 2: Planning
 ChatGPT returns:
-- recommended model mode: Auto or manual
-- task boundary
-- allowed files or directories
-- forbidden files or directories
-- acceptance criteria
-- a Cursor-ready prompt
+- Recommended model mode: Auto or manual
+- Task boundary and allowed/forbidden files
+- Acceptance criteria
+- Cursor-ready prompt
 
 ### Step 3: Execution
 Cursor should:
-1. read the relevant project docs
-2. summarize the execution plan
-3. implement the smallest viable change set
-4. run the relevant test or validation commands
-5. report changed files and outcomes
+1. Read relevant project docs
+2. Summarize the execution plan
+3. Implement minimal changes
+4. Run tests/validation
+5. Report changed files, test results, and blockers
 
 ### Step 4: Handoff
-The human returns one or more of:
+The human collects output:
 - Cursor summary
-- changed files
-- git diff
-- test output
-- logs
-- blocker description
+- Changed files
+- Git diff
+- Test results
+- Blocker description
 
 ### Step 5: Iteration
 ChatGPT decides whether to:
-- continue
-- fix a failed round
-- split the task further
-- switch models
-- move to the next phase
+- Continue
+- Fix a failed round
+- Split the task further
+- Switch models
+- Move to next phase
+
+## Phase-based Execution
+- Plan Phase: Generate execution plan
+- Execute Phase: Implement changes
+- Verify Phase: Validate output and report results
 
 ## Recommended Input Format
-
-```text
+```
 [Task Name]
 [Goal]
 [Background]
@@ -89,25 +90,17 @@ ChatGPT decides whether to:
 ```
 
 ## Recommended Output Format for Cursor
-
-```text
-1. Execution plan
-2. Changed files
-3. Summary of changes
-4. Validation or test results
-5. Unfinished items
-6. Risks or blockers
+```
+1. Execution Plan
+2. Summary of Changes
+3. Changed Files
+4. Test Results
+5. Blockers / Risks
 ```
 
 ## Branch Strategy
-
-Use one branch per task round or feature slice.
-
-Examples:
-- `feat/lineage-parser-mvp`
-- `fix/api-timeout-handling`
-- `refactor/service-layer-cleanup`
+- One branch per task round or feature slice
+- Examples: feat/lineage-parser-mvp, fix/api-timeout-handling, refactor/service-layer-cleanup
 
 ## Key Rule
-
-Do not let Cursor decide product direction independently. Use it to implement a well-defined step, not to redefine the roadmap.
+- Cursor executes tasks but does not define roadmap or product direction
