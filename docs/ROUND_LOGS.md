@@ -1,6 +1,6 @@
 # Round Logs Template
 
-This file defines the template to record each execution round when using ChatGPT + Cursor + GitHub workflow, incorporating Claude-inspired multi-phase tracking.
+This file defines the template to record each execution round when using ChatGPT + Cursor + GitHub workflow, incorporating Claude-inspired multi-phase tracking and low token incremental feed.
 
 ## Round Information
 - Round Number:
@@ -28,3 +28,8 @@ This file defines the template to record each execution round when using ChatGPT
 - Phase: Plan / Execute / Verify
 - Phase Status: Pending / In Progress / Completed
 - Phase Notes:
+
+## Summary for Next Round
+- Short summary of current round results (to feed ChatGPT)
+- Key blockers or pending tasks
+- Critical decisions
