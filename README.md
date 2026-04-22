@@ -1,6 +1,6 @@
 # AI Development Guidelines
 
-A reusable playbook for AI-assisted software development using **ChatGPT as the architecture brain**, **Cursor as the execution layer**, and **GitHub as the memory and collaboration layer**.
+A reusable playbook for AI-assisted software development using **ChatGPT as the architecture brain**, **Cursor as the execution layer**, and **GitHub as the memory and collaboration layer**, incorporating Claude-inspired multi-phase task execution.
 
 ## Goal
 
@@ -19,8 +19,8 @@ This is **not** a business-code repository. It is a **methodology repository**.
    - ChatGPT handles architecture, decomposition, and prompt design
    - Cursor handles implementation and iteration
 
-2. **Keep tasks small**
-   - A single execution round should target one clear outcome
+2. **Keep tasks small and phased**
+   - Use Plan / Execute / Verify phases for each round
    - Avoid vague goals like "build the whole system"
 
 3. **Always define boundaries**
@@ -32,7 +32,7 @@ This is **not** a business-code repository. It is a **methodology repository**.
    - Long-term project memory belongs in GitHub docs, not only in conversations
 
 5. **Human review remains mandatory**
-   - Architecture changes, database changes, security-sensitive changes, and production-impacting changes must be reviewed explicitly
+   - Critical tasks and architecture changes must always be approved by humans
 
 ## Recommended Workflow
 
@@ -42,7 +42,7 @@ This is **not** a business-code repository. It is a **methodology repository**.
 4. Let Cursor execute within a narrow scope
 5. Capture the result: changed files, test output, blockers
 6. Feed the result back into ChatGPT for the next round
-7. Record key decisions and status in the project repository
+7. Record key decisions, phase status, and task context in the project repository
 
 ## Repository Structure
 
@@ -52,6 +52,8 @@ This is **not** a business-code repository. It is a **methodology repository**.
   MODEL_SELECTION.md
   TASK_BREAKDOWN.md
   HANDOFF_PROTOCOL.md
+  STATE_TRACKER.md
+  ROUND_LOGS.md
 /templates
   ARCHITECTURE_TEMPLATE.md
 /prompts
@@ -87,6 +89,8 @@ This is **not** a business-code repository. It is a **methodology repository**.
 - `docs/DECISIONS.md`
 - `docs/HANDOFF.md`
 - `docs/CURSOR_RULES.md`
+- `docs/STATE_TRACKER.md`
+- `docs/ROUND_LOGS.md`
 
 ## Execution Policy
 
@@ -98,23 +102,24 @@ Good example:
 Bad example:
 - "Build the whole data platform automatically."
 
-## What This First Version Contains
+## What This Version Contains
 
-This initial version includes:
+This version includes:
 
-- a collaboration workflow
-- model selection guidance
-- task sizing rules
-- a result handoff protocol
-- a project architecture template
-- a reusable Cursor execution prompt
-- baseline Cursor operating rules
+- Claude-inspired collaboration workflow
+- Multi-phase execution (Plan / Execute / Verify)
+- Model selection guidance
+- Task sizing rules
+- Result handoff protocol
+- Project architecture template
+- Cursor execution prompt template
+- Cursor operational rules
 - GitHub PR and issue templates
+- Multi-round tracking and phase status logging
 
-Future versions can add:
+Future enhancements:
 
-- bugfix prompt templates
-- refactor prompt templates
-- review checklists
-- automation/webhook conventions
-- branch and release policies
+- Bugfix and refactor prompt templates
+- Review checklists
+- Automation/webhook conventions
+- Branch and release policies
