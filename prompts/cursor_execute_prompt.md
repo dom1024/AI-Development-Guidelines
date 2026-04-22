@@ -1,6 +1,6 @@
 # Cursor Execute Prompt Template
 
-Use this template to generate prompts for Cursor for each execution round.
+Use this template to generate prompts for Cursor for each execution round, including Plan and Verify phases inspired by Claude best practices.
 
 ## Template
 
@@ -16,6 +16,9 @@ Read the following context files:
 Goal for this round:
 [Write target outcome]
 
+Phase:
+- Plan / Execute / Verify
+
 Allowed files/directories:
 [List]
 
@@ -23,11 +26,11 @@ Forbidden files/directories:
 [List]
 
 Execution Instructions:
-1. Analyze the current state
-2. Plan minimal changes to achieve the goal
-3. Implement changes
-4. List all changed files with explanations
-5. Run tests and report results
+1. Analyze the current state (Plan phase)
+2. Outline execution steps (Plan phase)
+3. Implement changes (Execute phase)
+4. Run validation/tests (Verify phase)
+5. List all changed files with explanations
 6. Identify blockers
 
 Output Format:
